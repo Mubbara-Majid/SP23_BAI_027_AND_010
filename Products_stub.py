@@ -9,8 +9,3 @@ class Product:
 
   def make_purchase(self, quantity):
       pass
-
-# create product object
-# make purchases against different product quantities (make sure to run each test case)
-# do not forget to handle exceptions
-# print the remaining stock after each purchase
