@@ -42,8 +42,18 @@ class Product:
 
         return discounted_total
 
+  def make_purchase(self, quantity):
+        if quantity > self.amount:
+            raise ValueError(f"Only {self.amount} in stock.")
+        if quantity <= 0:
+            raise ValueError("Purchase quantity must be greater than zero.")
+        
+        total_price = self.get_price(quantity)
+        self.amount -= quantity
+        print(f"You bought {quantity} {self.name}(s) for a total of ${total_price:.2f}.")
+        print(f"Remaining Items: {self.amount}")
 
-
+        
 laptop1 = Product(Pname="Dell", Pprice=1200.99, Regprice=1500.00)
 laptop2 = Product(Pname="Apple", Pprice=2399.50, Regprice=2599.00)
 laptop3 = Product(Pname="HP", Pprice=1549.00, Regprice=1699.00)
@@ -52,5 +62,3 @@ laptop3 = Product(Pname="HP", Pprice=1549.00, Regprice=1699.00)
 laptop1.getPrice(Pname="Dell", Pprice=1200.99, Regprice=1500.00, quantity=5, amount=20)
 laptop2.getPrice(Pname="Apple", Pprice=2399.50, Regprice=2599.00, quantity=8, amount=15)
 laptop3.getPrice(Pname="HP", Pprice=1549.00, Regprice=1699.00, quantity=2, amount=10)
-
-      
