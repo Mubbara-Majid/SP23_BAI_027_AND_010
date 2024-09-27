@@ -4,8 +4,13 @@ class Product:
       self.amount = amount
       self.price = price
 
-  def get_price(self, quantity):
-      pass
-
   def make_purchase(self, quantity):
-      pass
+        if quantity > self.amount:
+            raise ValueError(f"Only {self.amount} in stock.")
+        if quantity <= 0:
+            raise ValueError("Purchase quantity must be greater than zero.")
+        
+        total_price = self.get_price(quantity)
+        self.amount -= quantity
+        print(f"You bought {quantity} {self.name}(s) for a total of ${total_price:.2f}.")
+        print(f"Remaining Items: {self.amount}")
